@@ -27,7 +27,7 @@ const number9El = document.querySelector('.number-9')
 const numberElArray = [
   number0El, number1El, number2El, number3El, number4El,
   number5El, number6El, number7El, number8El, number9El
-];
+]
 
 let valueStrInMemory = null
 let operatorInMemory = null
@@ -36,7 +36,7 @@ const getValueAsStr = () => valueEl.textContent.split(',').join('')
 
 const getValueAsNum = () => {
   return parseFloat(getValueAsStr())
-};
+}
 
 const setStrAsValue = (valueStr) => {
   if (valueStr[valueStr.length - 1] === '.') {
@@ -65,7 +65,7 @@ const handleNumberClick = (numStr) => {
 const getResultOfOperationAsStr = () => {
   const currentValueNum = getValueAsNum()
   const valueNumInMemory = parseFloat(valueStrInMemory)
-  let newValueNum;
+  let newValueNum
   if (operatorInMemory === 'addition') {
     newValueNum = valueNumInMemory + currentValueNum
   } else if (operatorInMemory === 'subtraction') {
@@ -97,14 +97,14 @@ acEl.addEventListener('click', () => {
   setStrAsValue('0')
   valueStrInMemory = null
   operatorInMemory = null
-});
+})
 pmEl.addEventListener('click', () => {
   const currentValueNum = getValueAsNum()
   const currentValueStr = getValueAsStr()
 
   if (currentValueStr === '-0') {
     setStrAsValue('0')
-    return;
+    return
   }
   if (currentValueNum >= 0) {
     setStrAsValue('-' + currentValueStr)
@@ -140,7 +140,7 @@ equalEl.addEventListener('click', () => {
   }
 })
 
-for (let i=0; i < numberElArray.length; i++) {
+for (let i = 0; i < numberElArray.length; i++) {
   const numberEl = numberElArray[i]
   numberEl.addEventListener('click', () => {
     handleNumberClick(i.toString())
@@ -152,8 +152,6 @@ decimalEl.addEventListener('click', () => {
     setStrAsValue(currentValueStr + '.')
   }
 })
-
-
 
 const updateTime = () => {
   const currentTime = new Date()
